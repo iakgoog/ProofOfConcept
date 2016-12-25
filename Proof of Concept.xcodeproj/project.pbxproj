@@ -14,6 +14,9 @@
 		5E3247301E103BBD00AEEA48 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E32472F1E103BBD00AEEA48 /* MainViewController.m */; };
 		5E3247331E103E9900AEEA48 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247321E103E9900AEEA48 /* TableViewCell.m */; };
 		5E3247361E10421500AEEA48 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247351E10421500AEEA48 /* Item.m */; };
+		5E32473D1E10476400AEEA48 /* ItemCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247381E10476400AEEA48 /* ItemCommunicator.m */; };
+		5E32473E1E10476400AEEA48 /* ItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E32473B1E10476400AEEA48 /* ItemManager.m */; };
+		5E3247411E1047AB00AEEA48 /* ItemBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247401E1047AB00AEEA48 /* ItemBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,14 @@
 		5E3247321E103E9900AEEA48 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		5E3247341E10421500AEEA48 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		5E3247351E10421500AEEA48 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		5E3247371E10476400AEEA48 /* ItemCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCommunicator.h; sourceTree = "<group>"; };
+		5E3247381E10476400AEEA48 /* ItemCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCommunicator.m; sourceTree = "<group>"; };
+		5E3247391E10476400AEEA48 /* ItemCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCommunicatorDelegate.h; sourceTree = "<group>"; };
+		5E32473A1E10476400AEEA48 /* ItemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManager.h; sourceTree = "<group>"; };
+		5E32473B1E10476400AEEA48 /* ItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemManager.m; sourceTree = "<group>"; };
+		5E32473C1E10476400AEEA48 /* ItemManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManagerDelegate.h; sourceTree = "<group>"; };
+		5E32473F1E1047AB00AEEA48 /* ItemBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBuilder.h; sourceTree = "<group>"; };
+		5E3247401E1047AB00AEEA48 /* ItemBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +77,18 @@
 				5E32471B1E103A6F00AEEA48 /* AppDelegate.m */,
 				5E3247341E10421500AEEA48 /* Item.h */,
 				5E3247351E10421500AEEA48 /* Item.m */,
+				5E32473F1E1047AB00AEEA48 /* ItemBuilder.h */,
+				5E3247401E1047AB00AEEA48 /* ItemBuilder.m */,
 				5E32472E1E103BBD00AEEA48 /* MainViewController.h */,
 				5E32472F1E103BBD00AEEA48 /* MainViewController.m */,
 				5E3247311E103E9900AEEA48 /* TableViewCell.h */,
 				5E3247321E103E9900AEEA48 /* TableViewCell.m */,
+				5E3247371E10476400AEEA48 /* ItemCommunicator.h */,
+				5E3247381E10476400AEEA48 /* ItemCommunicator.m */,
+				5E3247391E10476400AEEA48 /* ItemCommunicatorDelegate.h */,
+				5E32473A1E10476400AEEA48 /* ItemManager.h */,
+				5E32473B1E10476400AEEA48 /* ItemManager.m */,
+				5E32473C1E10476400AEEA48 /* ItemManagerDelegate.h */,
 				5E3247231E103A6F00AEEA48 /* Assets.xcassets */,
 				5E3247251E103A6F00AEEA48 /* LaunchScreen.storyboard */,
 				5E3247281E103A6F00AEEA48 /* Info.plist */,
@@ -157,10 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E32473E1E10476400AEEA48 /* ItemManager.m in Sources */,
 				5E3247361E10421500AEEA48 /* Item.m in Sources */,
 				5E32471C1E103A6F00AEEA48 /* AppDelegate.m in Sources */,
 				5E3247331E103E9900AEEA48 /* TableViewCell.m in Sources */,
+				5E32473D1E10476400AEEA48 /* ItemCommunicator.m in Sources */,
 				5E3247301E103BBD00AEEA48 /* MainViewController.m in Sources */,
+				5E3247411E1047AB00AEEA48 /* ItemBuilder.m in Sources */,
 				5E3247191E103A6F00AEEA48 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
