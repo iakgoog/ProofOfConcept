@@ -42,6 +42,8 @@ static NSString *const FeedURLString = @"https://dl.dropboxusercontent.com/u/746
     [_navbar.topItem setTitle:@"Title"];
     [self.view addSubview:_navbar];
     
+    _tableView.refreshControl = [self makeRefreshControl];
+    
     _manager = [[ItemManager alloc] init];
     _manager.communicator = [[ItemCommunicator alloc] init];
     _manager.communicator.delegate = _manager;
@@ -94,9 +96,25 @@ static NSString *const FeedURLString = @"https://dl.dropboxusercontent.com/u/746
     return navbar;
 }
 
+- (UIRefreshControl *)makeRefreshControl {
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.backgroundColor = [UIColor purpleColor];
+    refreshControl.tintColor = [UIColor whiteColor];
+    [refreshControl addTarget:self
+                       action:@selector(refreshTable)
+             forControlEvents:UIControlEventValueChanged];
+    
+    return refreshControl;
+}
+
 - (void)renderTable {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     [_manager fetchItems:FeedURLString];
+}
+
+- (void)refreshTable {
+    NSLog(@"Table is refreshing!!!!!!!");
+    [_tableView.refreshControl endRefreshing];
 }
 
 #pragma mark - ItemManagerDelegate
