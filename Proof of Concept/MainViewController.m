@@ -17,6 +17,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     UINavigationBar *_navbar;
     NSArray *_itemsArray;
     UIImage *_defaultImage;
+    NSMutableSet *_deadLinks;
 }
 
 @end
@@ -27,6 +28,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [super viewDidLoad];
     
     _defaultImage = [UIImage imageNamed:@"CanadaFlagBW.jpg"];
+    _deadLinks = [NSMutableSet set];
     
     _tableView = [self makeTableView];
     [_tableView registerClass:[TableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -156,35 +158,38 @@ static NSString *CellIdentifier = @"CellIdentifier";
         
         // start downloading image
         if (item.imageUrl.length > 0 && item.image == nil) {
-            NSURL *imageUrl = [NSURL URLWithString:item.imageUrl];
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            if (![_deadLinks containsObject:item.imageUrl]) {
+                NSURL *imageUrl = [NSURL URLWithString:item.imageUrl];
                 
-                NSURLSessionDownloadTask *downloadImageTask = [[NSURLSession sharedSession] downloadTaskWithURL:imageUrl completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                    if (error) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            cell.iconImage.image = _defaultImage;
-                        });
-                    } else {
-                        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            CGImageRef cgref = [image CGImage];
-                            CIImage *cim = [image CIImage];
-                            
-                            if (cim == nil && cgref == NULL) {
-                                NSLog(@"no underlying data of %@", imageUrl);
-                            } else {
-                                item.image = image;
-                                cell.iconImage.image = image;
-                            }
-                        });
-                    }
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     
-                }];
-                
-                [downloadImageTask resume];
-                
-            });
+                    NSURLSessionDownloadTask *downloadImageTask = [[NSURLSession sharedSession] downloadTaskWithURL:imageUrl completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                        if (error) {
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                cell.iconImage.image = _defaultImage;
+                            });
+                        } else {
+                            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                CGImageRef cgref = [image CGImage];
+                                CIImage *cim = [image CIImage];
+                                
+                                if (cim == nil && cgref == NULL) {
+                                    NSLog(@"no underlying data of %@", imageUrl);
+                                    [_deadLinks addObject:item.imageUrl];
+                                } else {
+                                    item.image = image;
+                                    cell.iconImage.image = image;
+                                }
+                            });
+                        }
+                        
+                    }];
+                    
+                    [downloadImageTask resume];
+                    
+                });
+            }
         }
     }
     
