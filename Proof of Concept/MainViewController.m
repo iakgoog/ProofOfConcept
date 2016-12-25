@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "TableViewCell.h"
 
 static NSString *CellIdentifier = @"CellIdentifier";
 
@@ -25,6 +26,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     [super viewDidLoad];
     
     _tableView = [self makeTableView];
+    [_tableView registerClass:[TableViewCell class] forCellReuseIdentifier:CellIdentifier];
     [self.view addSubview:_tableView];
     
     _navbar = [self makeNavigationBar];
@@ -83,10 +85,10 @@ static NSString *CellIdentifier = @"CellIdentifier";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     return cell;
