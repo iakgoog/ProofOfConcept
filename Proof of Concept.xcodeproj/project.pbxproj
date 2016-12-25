@@ -13,6 +13,7 @@
 		5E3247271E103A6F00AEEA48 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E3247251E103A6F00AEEA48 /* LaunchScreen.storyboard */; };
 		5E3247301E103BBD00AEEA48 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E32472F1E103BBD00AEEA48 /* MainViewController.m */; };
 		5E3247331E103E9900AEEA48 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247321E103E9900AEEA48 /* TableViewCell.m */; };
+		5E3247361E10421500AEEA48 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247351E10421500AEEA48 /* Item.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		5E32472F1E103BBD00AEEA48 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		5E3247311E103E9900AEEA48 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		5E3247321E103E9900AEEA48 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		5E3247341E10421500AEEA48 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		5E3247351E10421500AEEA48 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +64,8 @@
 			children = (
 				5E32471A1E103A6F00AEEA48 /* AppDelegate.h */,
 				5E32471B1E103A6F00AEEA48 /* AppDelegate.m */,
+				5E3247341E10421500AEEA48 /* Item.h */,
+				5E3247351E10421500AEEA48 /* Item.m */,
 				5E32472E1E103BBD00AEEA48 /* MainViewController.h */,
 				5E32472F1E103BBD00AEEA48 /* MainViewController.m */,
 				5E3247311E103E9900AEEA48 /* TableViewCell.h */,
@@ -152,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E3247361E10421500AEEA48 /* Item.m in Sources */,
 				5E32471C1E103A6F00AEEA48 /* AppDelegate.m in Sources */,
 				5E3247331E103E9900AEEA48 /* TableViewCell.m in Sources */,
 				5E3247301E103BBD00AEEA48 /* MainViewController.m in Sources */,
