@@ -26,6 +26,8 @@ static NSString *CellIdentifier = @"CellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _defaultImage = [UIImage imageNamed:@"CanadaFlagBW.jpg"];
+    
     _tableView = [self makeTableView];
     [_tableView registerClass:[TableViewCell class] forCellReuseIdentifier:CellIdentifier];
     [self.view addSubview:_tableView];
@@ -145,7 +147,49 @@ static NSString *CellIdentifier = @"CellIdentifier";
         
         cell.titleLabel.text = item.title;
         cell.bodyLabel.text = item.descriptionText;
+        
+        if (item.image) {
+            cell.iconImage.image = item.image;
+        } else {
+            cell.iconImage.image = _defaultImage;
+        }
+        
+        // start downloading image
+        if (item.imageUrl.length > 0 && item.image == nil) {
+            NSURL *imageUrl = [NSURL URLWithString:item.imageUrl];
+            
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                
+                NSURLSessionDownloadTask *downloadImageTask = [[NSURLSession sharedSession] downloadTaskWithURL:imageUrl completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+                    if (error) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            cell.iconImage.image = _defaultImage;
+                        });
+                    } else {
+                        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            CGImageRef cgref = [image CGImage];
+                            CIImage *cim = [image CIImage];
+                            
+                            if (cim == nil && cgref == NULL) {
+                                NSLog(@"no underlying data of %@", imageUrl);
+                            } else {
+                                item.image = image;
+                                cell.iconImage.image = image;
+                            }
+                        });
+                    }
+                    
+                }];
+                
+                [downloadImageTask resume];
+                
+            });
+        }
     }
+    
+    // Ensure that fresh created cell will be added constraints
+    [cell setNeedsUpdateConstraints];
     
     return cell;
 }
