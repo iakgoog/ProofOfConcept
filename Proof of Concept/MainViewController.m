@@ -89,6 +89,7 @@ static NSString *CellIdentifier = @"CellIdentifier";
     _itemsArray = [self itemsFromJSON:parsedObject];
     [_navbar.topItem setTitle:[self titleFromJSON:parsedObject]];
     
+    [_tableView reloadData];
 }
 
 - (NSArray *)itemsFromJSON:(NSDictionary *)parsedObject {
@@ -101,16 +102,15 @@ static NSString *CellIdentifier = @"CellIdentifier";
         BOOL isTitleNull = [itemDic[@"title"] isKindOfClass:[NSNull class]];
         BOOL isDescriptionNull = [itemDic[@"description"] isKindOfClass:[NSNull class]];
         BOOL isImageNull = [itemDic[@"imageHref"] isKindOfClass:[NSNull class]];
+        
+        // If all fields are NULL, the item will not be added
         if (isTitleNull && isDescriptionNull && isImageNull) {
             continue;
         }
+        
         NSString *titleText = (isTitleNull) ? @"" : itemDic[@"title"];
         NSString *descriptionText = (isDescriptionNull) ? @"" : itemDic[@"description"];
         NSString *imageUrl = (isImageNull) ? @"" : itemDic[@"imageHref"];
-        NSLog(@"title => %@", titleText);
-        NSLog(@"description => %@", descriptionText);
-        NSLog(@"imageHref => %@", imageUrl);
-        NSLog(@"-------------------------------------------------------");
         
         [item setTitle:titleText];
         [item setDescriptionText:descriptionText];
@@ -138,6 +138,13 @@ static NSString *CellIdentifier = @"CellIdentifier";
     
     if (cell == nil) {
         cell = [[TableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if (_itemsArray.count > 0) {
+        Item *item = _itemsArray[indexPath.row];
+        
+        cell.titleLabel.text = item.title;
+        cell.bodyLabel.text = item.descriptionText;
     }
     
     return cell;
