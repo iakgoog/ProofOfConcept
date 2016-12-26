@@ -17,6 +17,7 @@
 		5E32473D1E10476400AEEA48 /* ItemCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247381E10476400AEEA48 /* ItemCommunicator.m */; };
 		5E32473E1E10476400AEEA48 /* ItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E32473B1E10476400AEEA48 /* ItemManager.m */; };
 		5E3247411E1047AB00AEEA48 /* ItemBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E3247401E1047AB00AEEA48 /* ItemBuilder.m */; };
+		5E379D4B1E10788600FA3490 /* IconDownloadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E379D4A1E10788600FA3490 /* IconDownloadHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		5E32473C1E10476400AEEA48 /* ItemManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemManagerDelegate.h; sourceTree = "<group>"; };
 		5E32473F1E1047AB00AEEA48 /* ItemBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemBuilder.h; sourceTree = "<group>"; };
 		5E3247401E1047AB00AEEA48 /* ItemBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemBuilder.m; sourceTree = "<group>"; };
+		5E379D491E10788600FA3490 /* IconDownloadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconDownloadHelper.h; sourceTree = "<group>"; };
+		5E379D4A1E10788600FA3490 /* IconDownloadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconDownloadHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				5E3247351E10421500AEEA48 /* Item.m */,
 				5E32473F1E1047AB00AEEA48 /* ItemBuilder.h */,
 				5E3247401E1047AB00AEEA48 /* ItemBuilder.m */,
+				5E379D491E10788600FA3490 /* IconDownloadHelper.h */,
+				5E379D4A1E10788600FA3490 /* IconDownloadHelper.m */,
 				5E32472E1E103BBD00AEEA48 /* MainViewController.h */,
 				5E32472F1E103BBD00AEEA48 /* MainViewController.m */,
 				5E3247311E103E9900AEEA48 /* TableViewCell.h */,
@@ -177,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E32473E1E10476400AEEA48 /* ItemManager.m in Sources */,
+				5E379D4B1E10788600FA3490 /* IconDownloadHelper.m in Sources */,
 				5E3247361E10421500AEEA48 /* Item.m in Sources */,
 				5E32471C1E103A6F00AEEA48 /* AppDelegate.m in Sources */,
 				5E3247331E103E9900AEEA48 /* TableViewCell.m in Sources */,
@@ -334,6 +340,7 @@
 				5E32472D1E103A6F00AEEA48 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
